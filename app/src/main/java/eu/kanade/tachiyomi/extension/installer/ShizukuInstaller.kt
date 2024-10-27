@@ -13,10 +13,12 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import logcat.LogPriority
 import rikka.shizuku.Shizuku
+import rikka.shizuku.ShizukuRemoteProcess
 import tachiyomi.core.common.util.system.logcat
 import tachiyomi.i18n.MR
 import java.io.BufferedReader
 import java.io.InputStream
+import java.lang.reflect.Method
 
 class ShizukuInstaller(private val service: Service) : Installer(service) {
 
@@ -88,9 +90,9 @@ class ShizukuInstaller(private val service: Service) : Installer(service) {
         super.onDestroy()
     }
 
+    private val newProcess: Method
     private fun exec(command: String, stdin: InputStream? = null): ShellResult {
-        @Suppress("DEPRECATION")
-        val process = Shizuku.newProcess(arrayOf("sh", "-c", command), null, null)
+        val process = newProcess.invoke(null, arrayOf("sh", "-c", command), null, null) as ShizukuRemoteProcess
         if (stdin != null) {
             process.outputStream.use { stdin.copyTo(it) }
         }
@@ -117,6 +119,9 @@ class ShizukuInstaller(private val service: Service) : Installer(service) {
             service.stopSelf()
             false
         }
+        newProcess = Shizuku::class.java
+            .getDeclaredMethod("newProcess", Array::class.java, Array::class.java, String::class.java)
+        newProcess.isAccessible = true
     }
 }
 
