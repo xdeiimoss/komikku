@@ -149,6 +149,7 @@ class MangaDexFollowsScreen(private val sourceId: Long) : Screen() {
                     }
                 },
                 // KMK -->
+                showReadingProgress = screenModel.showReadingProgress,
                 selection = bulkFavoriteState.selection,
                 browseSourceState = state,
                 // KMK <--

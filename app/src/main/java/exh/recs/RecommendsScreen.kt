@@ -125,6 +125,7 @@ class RecommendsScreen(val mangaId: Long, val sourceId: Long) : Screen() {
                     // KMK <--
                 },
                 // KMK -->
+                showReadingProgress = screenModel.showReadingProgress,
                 selection = bulkFavoriteState.selection,
                 browseSourceState = state,
                 // KMK <--

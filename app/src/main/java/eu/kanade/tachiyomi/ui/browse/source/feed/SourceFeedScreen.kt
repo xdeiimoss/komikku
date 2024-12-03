@@ -180,6 +180,7 @@ class SourceFeedScreen(val sourceId: Long) : Screen() {
                             navigator.push(MangaScreen(manga.id, true))
                         }
                     },
+                    showReadingProgress = screenModel.showReadingProgress,
                     bulkFavoriteScreenModel = bulkFavoriteScreenModel,
                     // KMK <--
                 )

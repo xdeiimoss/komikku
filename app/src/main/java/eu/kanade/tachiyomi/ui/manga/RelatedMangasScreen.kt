@@ -38,6 +38,7 @@ fun RelatedMangasScreen(
 ) {
     val sourcePreferences: SourcePreferences = Injekt.get()
     var displayMode by sourcePreferences.sourceDisplayMode().asState(scope)
+    val showReadingProgress by sourcePreferences.showReadingProgress().asState(scope)
 
     val bulkFavoriteState by bulkFavoriteScreenModel.state.collectAsState()
 
@@ -108,6 +109,7 @@ fun RelatedMangasScreen(
             onKeywordLongClick = { query ->
                 navigator.push(GlobalSearchScreen(query))
             },
+            showReadingProgress = showReadingProgress,
             selection = bulkFavoriteState.selection,
         )
     }

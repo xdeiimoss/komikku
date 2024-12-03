@@ -192,6 +192,7 @@ fun feedTab(
                                 navigator.push(MangaScreen(manga.id, true))
                             }
                         },
+                        showReadingProgress = screenModel.showReadingProgress,
                         selection = bulkFavoriteState.selection,
                         // KMK <--
                         onRefresh = screenModel::init,

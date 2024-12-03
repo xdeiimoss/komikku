@@ -131,6 +131,10 @@ open class BrowseSourceScreenModel(
     val sourceIsMangaDex = sourceId in mangaDexSourceIds
     // SY <--
 
+    // KMK -->
+    val showReadingProgress by sourcePreferences.showReadingProgress().asState(screenModelScope)
+    // KMK <--
+
     init {
         // KMK -->
         screenModelScope.launch {

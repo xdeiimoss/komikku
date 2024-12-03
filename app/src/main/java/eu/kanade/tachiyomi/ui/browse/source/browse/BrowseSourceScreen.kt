@@ -369,6 +369,7 @@ data class BrowseSourceScreen(
                     }
                 },
                 // KMK -->
+                showReadingProgress = screenModel.showReadingProgress,
                 selection = bulkFavoriteState.selection,
                 browseSourceState = state,
                 // KMK <--

@@ -169,6 +169,7 @@ data class SourceSearchScreen(
                 },
                 onMangaLongClick = { navigator.push(MangaScreen(it.id, true)) },
                 // KMK -->
+                showReadingProgress = screenModel.showReadingProgress,
                 selection = bulkFavoriteState.selection,
                 browseSourceState = state,
                 // KMK <--
