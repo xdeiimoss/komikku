@@ -5,6 +5,7 @@ import eu.kanade.tachiyomi.data.download.DownloadManager
 import eu.kanade.tachiyomi.extension.ExtensionManager
 import eu.kanade.tachiyomi.source.online.HttpSource
 import eu.kanade.tachiyomi.source.online.all.EHentai
+import eu.kanade.tachiyomi.source.online.all.EHentaiX
 import eu.kanade.tachiyomi.source.online.all.MangaDex
 import eu.kanade.tachiyomi.source.online.all.MergedSource
 import eu.kanade.tachiyomi.source.online.all.NHentai
@@ -165,7 +166,8 @@ class AndroidSourceManager(
                 name,
                 (this as? CatalogueSource)?.lang,
             )
-            null
+            //null
+            newSource
         } else {
             newSource
         }
@@ -273,6 +275,13 @@ class AndroidSourceManager(
                 fillInSourceId,
                 "eu.kanade.tachiyomi.extension.all.nhentai.NHentai",
                 NHentai::class,
+                true,
+            ),
+            DelegatedSource(
+                "E-HentaiX",
+                fillInSourceId,
+                "eu.kanade.tachiyomi.extension.all.ehentai",
+                EHentaiX::class,
                 true,
             ),
         ).associateBy { it.originalSourceQualifiedClassName }

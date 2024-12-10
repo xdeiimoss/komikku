@@ -21,7 +21,6 @@ import exh.metadata.metadata.NHentaiSearchMetadata
 import exh.metadata.metadata.RaisedSearchMetadata
 import exh.metadata.metadata.base.RaisedTag
 import exh.source.DelegatedHttpSource
-import exh.source.NHENTAI_SOURCE_ID
 import exh.util.trimOrNull
 import exh.util.urlImportFetchSearchManga
 import exh.util.urlImportFetchSearchMangaSuspend
@@ -56,12 +55,12 @@ class NHentai(delegate: HttpSource, val context: Context) :
     override fun fetchSearchManga(page: Int, query: String, filters: FilterList) =
         urlImportFetchSearchManga(context, query) {
             @Suppress("DEPRECATION")
-            super<DelegatedHttpSource>.fetchSearchManga(page, query, filters)
+            super.fetchSearchManga(page, query, filters)
         }
 
     override suspend fun getSearchManga(page: Int, query: String, filters: FilterList): MangasPage {
         return urlImportFetchSearchMangaSuspend(context, query) {
-            super<DelegatedHttpSource>.getSearchManga(page, query, filters)
+            super.getSearchManga(page, query, filters)
         }
     }
 
@@ -215,8 +214,6 @@ class NHentai(delegate: HttpSource, val context: Context) :
     }
 
     companion object {
-        const val otherId = NHENTAI_SOURCE_ID
-
         private val jsonParser = Json {
             ignoreUnknownKeys = true
         }

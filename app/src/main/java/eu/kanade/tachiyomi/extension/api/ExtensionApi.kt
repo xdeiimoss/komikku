@@ -113,7 +113,7 @@ internal class ExtensionApi {
             .filterIsInstance<LoadResult.Success>()
             .map { it.extension }
             // SY -->
-            .filterNot { it.isBlacklisted(blacklistEnabled) }
+            // .filterNot { it.isBlacklisted(blacklistEnabled) }
         // SY <--
 
         val extensionsWithUpdate = mutableListOf<Extension.Installed>()
