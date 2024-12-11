@@ -745,6 +745,14 @@ object SettingsAdvancedScreen : SearchableSettings {
                     },
                 ),
                 Preference.PreferenceItem.SwitchPreference(
+                    pref = sourcePreferences.enableSourceBlacklist(),
+                    title = stringResource(SYMR.strings.enable_source_blacklist),
+                    subtitle = stringResource(
+                        SYMR.strings.enable_source_blacklist_summary,
+                        stringResource(MR.strings.app_name),
+                    ),
+                ),
+                Preference.PreferenceItem.SwitchPreference(
                     pref = delegateSourcePreferences.delegateSources(),
                     title = stringResource(SYMR.strings.toggle_delegated_sources),
                     subtitle = stringResource(
@@ -763,14 +771,6 @@ object SettingsAdvancedScreen : SearchableSettings {
                             context.stringResource(ehLogLevel.description)
                         })"
                     }.toMap().toImmutableMap(),
-                ),
-                Preference.PreferenceItem.SwitchPreference(
-                    pref = sourcePreferences.enableSourceBlacklist(),
-                    title = stringResource(SYMR.strings.enable_source_blacklist),
-                    subtitle = stringResource(
-                        SYMR.strings.enable_source_blacklist_summary,
-                        stringResource(MR.strings.app_name),
-                    ),
                 ),
                 kotlin.run {
                     var enableEncryptDatabase by rememberSaveable { mutableStateOf(false) }
