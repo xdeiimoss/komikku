@@ -22,5 +22,8 @@
     <!-- Material Design Colors -->
     <color name="md_black_1000_12">#1F000000</color>
     <color name="md_white_1000_12">#1FFFFFFF</color>
-
+    
+    <!-- Cover Theme Constants -->
+    <color name="cover_theme_min_contrast_ratio">#737373</color>
+    <color name="cover_theme_secondary_shift">#3C3C3C</color>
 </resources>
