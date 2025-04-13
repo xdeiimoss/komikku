@@ -128,6 +128,9 @@ class BackupRestorer(
             if (options.extensionRepoSettings) {
                 restoreExtensionRepos(backup.backupExtensionRepo)
             }
+            if (backup.enabledLanguages.isNotEmpty()) {
+                restoreEnabledLanguages(backup.enabledLanguages)
+            }
 
             // TODO: optionally trigger online library + tracker update
         }
@@ -243,6 +246,13 @@ class BackupRestorer(
                     isSync,
                 )
             }
+    }
+
+    private fun restoreEnabledLanguages(enabledLanguages: List<EnabledLanguages>) {
+        val toggleLanguage = Injekt.get<ToggleLanguage>()
+        enabledLanguages.forEach { language ->
+            toggleLanguage.enable(language)
+        }
     }
 
     private fun writeErrorLog(): File {

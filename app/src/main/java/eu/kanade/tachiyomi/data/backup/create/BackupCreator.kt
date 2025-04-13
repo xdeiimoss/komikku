@@ -96,6 +96,8 @@ class BackupCreator(
             val backupManga =
                 backupMangas(getFavorites.await() + nonFavoriteManga /* SY --> */ + mergedManga /* SY <-- */, options)
 
+            val enabledLanguages = Injekt.get<SourcePreferences>().enabledLanguages().get()
+
             val backup = Backup(
                 backupManga = backupManga,
                 backupCategories = backupCategories(options),
@@ -111,6 +113,8 @@ class BackupCreator(
                 // KMK -->
                 backupFeeds = backupFeeds(options),
                 // KMK <--
+
+                enabledLanguages = enabledLanguages // Add enabled languages to the backup
             )
 
             val byteArray = parser.encodeToByteArray(Backup.serializer(), backup)
